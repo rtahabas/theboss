@@ -23,9 +23,8 @@ const Navbar = () => {
             </li>
           </>
         )}
-        {
+        {user && (
           <li>
-            user &&(
             {!isPending && (
               <button className="btn" onClick={logout}>
                 Logout
@@ -36,9 +35,8 @@ const Navbar = () => {
                 Logging out..
               </button>
             )}
-            )
           </li>
-        }
+        )}
       </ul>
     </nav>
   );
