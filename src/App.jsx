@@ -8,6 +8,7 @@ import Project from "./pages/project/Project";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Sidebar from "./pages/components/Sidebar";
+import OnlineUsers from "./pages/components/OnlineUsers";
 import "./App.css";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
               </Route>
             </Switch>
           </div>
+          {user && <OnlineUsers />}
         </BrowserRouter>
       )}
     </div>
