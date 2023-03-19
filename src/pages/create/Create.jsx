@@ -2,6 +2,11 @@ import React from "react";
 import { Button } from "@nextui-org/react";
 import Select from "react-select";
 import { useCollection } from "../../hooks/useCollection";
+import { timestamp } from "../../firebase/config";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFirestore } from "../../hooks/useFirestore";
+import { useHistory } from "react-router-dom";
+
 const categories = [
   {
     value: "development",
@@ -22,6 +27,7 @@ const categories = [
 ];
 
 function Create() {
+  const history = useHistory();
   const { document } = useCollection("users");
   const [name, setName] = React.useState("");
   const [details, setDetails] = React.useState("");
@@ -30,6 +36,8 @@ function Create() {
   const [users, setUsers] = React.useState("");
   const [assignedUser, setAssignedUser] = React.useState([]);
   const [formError, setFormError] = React.useState(null);
+  const { user } = useAuthContext();
+  const { addDocument, response } = useFirestore("projects");
 
   React.useEffect(() => {
     if (document) {
@@ -40,7 +48,7 @@ function Create() {
     }
   }, [document]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError(null);
 
@@ -52,6 +60,34 @@ function Create() {
     if (assignedUser.length < 1) {
       setFormError("Please assign the project to at least 1 user ");
       return;
+    }
+
+    const createdBy = {
+      name: user.displayName,
+      photoURL: user.photoURL,
+      id: user.uid,
+    };
+
+    const assignedUserList = assignedUser.map((selectedUsers) => {
+      return {
+        name: selectedUsers.value.displayName,
+        photoURL: selectedUsers.value.photoURL,
+        id: selectedUsers.value.id,
+      };
+    });
+
+    const project = {
+      name,
+      details,
+      category: category.value,
+      dueDate: timestamp.fromDate(new Date(dueDetail)),
+      comments: [],
+      createdBy,
+      assignedUserList,
+    };
+    await addDocument(project);
+    if (!response.error) {
+      history.push("/");
     }
   };
 
