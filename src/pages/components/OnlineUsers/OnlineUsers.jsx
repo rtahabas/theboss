@@ -1,6 +1,6 @@
 import { Badge } from "@nextui-org/react";
-import { useCollection } from "../../hooks/useCollection";
-import Avatar from "./Avatar";
+import { useCollection } from "../../../hooks/useCollection";
+import Avatar from "../Avatar/Avatar";
 import "./OnlineUsers.css";
 
 const OnlineUsers = () => {

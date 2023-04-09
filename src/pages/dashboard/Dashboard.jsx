@@ -1,7 +1,7 @@
 import { useCollection } from "../../hooks/useCollection";
 import { Container, Row, Col, Spacer } from "@nextui-org/react";
 import "./Dashboard.css";
-import ProjectList from "../components/ProjectList";
+import ProjectList from "../components/ProjectList/ProjectList";
 
 const Dashboard = () => {
   const { document, error } = useCollection("projects");

@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
-import Navbar from "./pages/components/Navbar";
-import Sidebar from "./pages/components/Sidebar";
-import OnlineUsers from "./pages/components/OnlineUsers";
+import Navbar from "./pages/components/Navbar/Navbar";
+import Sidebar from "./pages/components/Sidebar/Sidebar";
+import OnlineUsers from "./pages/components/OnlineUsers/OnlineUsers";
 import "./App.css";
 import { AppRouter } from "./AppRouter";
 import { routes } from "./routes/routes";
