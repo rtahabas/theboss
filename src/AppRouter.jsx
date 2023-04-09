@@ -7,7 +7,7 @@ import NotFound404 from "./pages/notfound404/NotFound404";
 
 export function AppRouter({ routes, ...props }) {
   const renderRoute = (el) => {
-    const PageComp = React.lazy(() => import(`./pages/${el.modulePath}`));
+    const PageComp = React.lazy(() => import(/* @vite-ignore */ `${el.modulePath}`));
     const nested = hasArrayElement(el.children);
     if (el.notIncludeRedirections) {
       //404, Privacy, Support Ananymous and Login User see at the same time..

@@ -27,15 +27,7 @@ export const AuthContextProvider = ({ children }) => {
       dispatch({ type: "AUTH_IS_READY", payload: user });
       unsub();
     });
-
   }, []);
 
-  console.log(state.user)
-
-
-  return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;
 };

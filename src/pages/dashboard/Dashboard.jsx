@@ -10,6 +10,7 @@ const Dashboard = () => {
     <Container gap={0}>
       <Spacer y={1} />
       <Row gap={1}>{document && <ProjectList project={document} />}</Row>
+      {error && <div>{error}</div>}
     </Container>
   );
 };
