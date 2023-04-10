@@ -7,8 +7,6 @@ const Project = () => {
   const { id } = useParams();
   const { document, error } = useDocument("projects", id);
 
-  console.log(document);
-
   if (error) {
     return <div className="error"> {error}</div>;
   }

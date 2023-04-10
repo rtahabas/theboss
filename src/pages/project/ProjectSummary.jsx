@@ -1,8 +1,6 @@
 import { Card, Col, Avatar } from "@nextui-org/react";
 
 const ProjectSummary = ({ project }) => {
-  console.log(project);
-
   return (
     <div>
       {project.length === 0 && <div>No project yet!</div>}
