@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { useLogin } from "../../hooks/useLogin";
+import { useLogin } from "hooks/useLogin";
 import "./Login.css";
 
 const Login = () => {
@@ -30,7 +30,7 @@ const Login = () => {
           Loading
         </button>
       )}
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
     </form>
   );
 };
