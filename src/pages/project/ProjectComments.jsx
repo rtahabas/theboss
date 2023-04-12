@@ -1,4 +1,5 @@
 import { Avatar, Button, Textarea } from "@nextui-org/react";
+import { formatDistanceToNow } from "date-fns";
 import { timestamp } from "firebase/config";
 import { useAuthContext } from "hooks/useAuthContext";
 import { useFirestore } from "hooks/useFirestore";
@@ -36,6 +37,7 @@ const ProjectComments = ({ project }) => {
       <ul>
         {project.comments.length > 0 &&
           project.comments.map((comment) => {
+            console.log(comment);
             return (
               <li key={comment.id}>
                 <div>
@@ -44,6 +46,7 @@ const ProjectComments = ({ project }) => {
                     {comment.displayName}
                   </h3>
                   <p>{comment.content}</p>
+                  <span>{formatDistanceToNow(comment.createdAt.toDate(), { addSuffix: true })}</span>
                 </div>
               </li>
             );
