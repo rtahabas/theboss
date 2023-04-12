@@ -32,7 +32,7 @@ const Dashboard = () => {
           case "Design":
           case "Marketing":
           case "Sales":
-            return project.category === filter;
+            return project.category === filter.toLowerCase();
           default:
             return true;
         }
