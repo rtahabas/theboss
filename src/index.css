@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@font-face {
+  font-family: "Virgil";
+  src: url("./assets/Virgil.woff2") format("woff2");
+}
 /* variables */
 :root {
   --heading-color: #444;
@@ -7,12 +10,12 @@
   --primary-color: #9750dd;
   --highlight-color: #d13267;
   --bg-color: #f4f4f4;
-  --sidebar-color: #01050c
+  --sidebar-color: #01050c;
 }
 
 /* base styles */
 body {
-  font-family: Poppins, sans-serif;
+  font-family: "Virgil", sans-serif !important;
   margin: 0;
   font-size: 1.1em;
   background: var(--bg-color);
