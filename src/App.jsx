@@ -6,6 +6,7 @@ import OnlineUsers from "./pages/components/OnlineUsers/OnlineUsers";
 import "./App.css";
 import { AppRouter } from "./AppRouter";
 import { routes } from "./routes/routes";
+import Layout from "layout/Layout";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -15,10 +16,9 @@ function App() {
       {authIsReady && (
         <BrowserRouter>
           {user && <Sidebar />}
-          <div className="container">
-            <Navbar />
+          <Layout>
             <AppRouter routes={routes} />
-          </div>
+          </Layout>
           {user && <OnlineUsers />}
         </BrowserRouter>
       )}
