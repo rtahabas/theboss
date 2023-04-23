@@ -1,11 +1,30 @@
-import Navbar from "pages/components/Navbar/Navbar";
+import { Col, Container, Row } from "@nextui-org/react";
+import OnlineUsers from "pages/components/OnlineUsers/OnlineUsers";
+import Sidebar from "pages/components/Sidebar/Sidebar";
+import "./Layout.css";
+import { Box } from "components/Box/Box";
+import Navigation from "pages/components/Navbar/Navigation";
 
 const Layout = ({ children }) => {
   return (
-    <div className="container">
-      <Navbar />
-      {children}
-    </div>
+    <Container gap={0}>
+      <Box
+        css={{
+          maxW: "100%",
+        }}
+      >
+        <Navigation />
+        <Row>
+          <Col span={2}>
+            <Sidebar />
+          </Col>
+          <Col span={8}>{children}</Col>
+          <Col span={2}>
+            <OnlineUsers />
+          </Col>
+        </Row>
+      </Box>
+    </Container>
   );
 };
 

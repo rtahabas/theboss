@@ -1,0 +1,10 @@
+.transparent-button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  outline: inherit;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}

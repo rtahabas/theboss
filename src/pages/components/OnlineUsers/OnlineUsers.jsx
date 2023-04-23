@@ -1,4 +1,4 @@
-import { Badge } from "@nextui-org/react";
+import { Badge, User } from "@nextui-org/react";
 import { useCollection } from "../../../hooks/useCollection";
 import Avatar from "../Avatar/Avatar";
 import "./OnlineUsers.css";
@@ -13,9 +13,7 @@ const OnlineUsers = () => {
       {document &&
         document.map((user) => (
           <div key={user.id} className="user-list-item">
-            {user.online && <Badge color="success" variant="dot" />}
-            <span> {user.displayName} </span>
-            <Avatar src={user.photoURL} />
+            <User src={user.photoURL} name={user.displayName} bordered color={user.online ? "success" : "error"} />
           </div>
         ))}
     </div>

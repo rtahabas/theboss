@@ -4,10 +4,10 @@ import { hasArrayElement } from "./utils/array-util";
 import { RouteWithRedirections } from "./routes/RouteWithRedirection";
 import { Error } from "./pages/error/Error";
 import NotFound404 from "./pages/notfound404/NotFound404";
+import { Loading } from "@nextui-org/react";
 
 export function AppRouter({ routes, ...props }) {
   const renderRoute = (el) => {
-    console.log("renderRoute", el);
     const PageComp = el.modulePath;
     const nested = hasArrayElement(el.children);
     if (el.notIncludeRedirections) {
@@ -38,7 +38,7 @@ export function AppRouter({ routes, ...props }) {
   };
 
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={<Loading type="points" />}>
       <Error fallback={<p>Page Rendering Exception</p>}>
         <Switch>
           {routes.map(renderRoute)}

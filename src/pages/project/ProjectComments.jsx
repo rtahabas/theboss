@@ -32,19 +32,18 @@ const ProjectComments = ({ project }) => {
 
   return (
     <div>
-      <h1>Project Comments</h1>
+      <h3>Project Comments</h3>
 
       <ul>
         {project.comments.length > 0 &&
           project.comments.map((comment) => {
-            console.log(comment);
             return (
               <li key={comment.id}>
                 <div>
-                  <h3>
+                  <h4>
                     <Avatar src={comment.photoURL} />
                     {comment.displayName}
-                  </h3>
+                  </h4>
                   <p>{comment.content}</p>
                   <span>{formatDistanceToNow(comment.createdAt.toDate(), { addSuffix: true })}</span>
                 </div>

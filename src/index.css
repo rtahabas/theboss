@@ -18,7 +18,6 @@ body {
   font-family: "Virgil", sans-serif !important;
   margin: 0;
   font-size: 1.1em;
-  background: var(--bg-color);
 }
 ul,
 li,

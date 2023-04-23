@@ -5,6 +5,7 @@ import ProjectFilter from "./ProjectFilter";
 import { useState } from "react";
 import { useAuthContext } from "hooks/useAuthContext";
 import "./Dashboard.css";
+import Layout from "layout/Layout";
 
 const Dashboard = () => {
   const { document, error } = useCollection("projects");
@@ -40,12 +41,14 @@ const Dashboard = () => {
     : null;
 
   return (
-    <Container gap={0}>
-      <ProjectFilter projectsFilter={projectsFilter} filter={filter} />
-      <Spacer y={1} />
-      <Row gap={1}>{document && <ProjectList project={projects} />}</Row>
-      {error && <div>{error}</div>}
-    </Container>
+    <Layout>
+      <Container gap={0}>
+        <ProjectFilter projectsFilter={projectsFilter} filter={filter} />
+        <Spacer y={1} />
+        <Row gap={1}>{document && <ProjectList project={projects} />}</Row>
+        {error && <div>{error}</div>}
+      </Container>
+    </Layout>
   );
 };
 

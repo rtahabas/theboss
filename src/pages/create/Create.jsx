@@ -6,6 +6,7 @@ import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
+import Layout from "layout/Layout";
 
 const categories = [
   {
@@ -92,34 +93,36 @@ function Create() {
   };
 
   return (
-    <div>
-      <h2>Create New Project</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>Project Name:</span>
-          <input type="text" required onChange={(e) => setName(e.target.value)} value={name} />
-        </label>
-        <label>
-          <span>Project Details:</span>
-          <textarea type="text" required onChange={(e) => setDetails(e.target.value)} value={details} />
-        </label>
-        <label>
-          <span>Set Due Date:</span>
-          <input type="date" required onChange={(e) => setDuedetail(e.target.value)} value={dueDetail} />
-        </label>
-        <label>
-          <span>Project Category:</span>
-          <Select options={categories} onChange={(option) => setCategory(option)} />
-        </label>
-        <label>
-          <span>Assign to :</span>
-          <Select options={users} onChange={(option) => setAssignedUser(option)} isMulti />
-        </label>
-        <Button type="submit">Add Project</Button>
+    <Layout>
+      <div>
+        <h2>Create New Project</h2>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <span>Project Name:</span>
+            <input type="text" required onChange={(e) => setName(e.target.value)} value={name} />
+          </label>
+          <label>
+            <span>Project Details:</span>
+            <textarea type="text" required onChange={(e) => setDetails(e.target.value)} value={details} />
+          </label>
+          <label>
+            <span>Set Due Date:</span>
+            <input type="date" required onChange={(e) => setDuedetail(e.target.value)} value={dueDetail} />
+          </label>
+          <label>
+            <span>Project Category:</span>
+            <Select options={categories} onChange={(option) => setCategory(option)} />
+          </label>
+          <label>
+            <span>Assign to :</span>
+            <Select options={users} onChange={(option) => setAssignedUser(option)} isMulti />
+          </label>
+          <Button type="submit">Add Project</Button>
 
-        {formError && <p className="error">{formError}</p>}
-      </form>
-    </div>
+          {formError && <p className="error">{formError}</p>}
+        </form>
+      </div>
+    </Layout>
   );
 }
 export default Create;
