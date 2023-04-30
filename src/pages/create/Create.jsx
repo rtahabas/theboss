@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@nextui-org/react";
+import { Button, Col, Container, Input, Row, Textarea } from "@nextui-org/react";
 import Select from "react-select";
 import { useCollection } from "../../hooks/useCollection";
 import { timestamp } from "../../firebase/config";
@@ -94,34 +94,50 @@ function Create() {
 
   return (
     <Layout>
-      <div>
-        <h2>Create New Project</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <span>Project Name:</span>
-            <input type="text" required onChange={(e) => setName(e.target.value)} value={name} />
-          </label>
-          <label>
-            <span>Project Details:</span>
-            <textarea type="text" required onChange={(e) => setDetails(e.target.value)} value={details} />
-          </label>
-          <label>
-            <span>Set Due Date:</span>
-            <input type="date" required onChange={(e) => setDuedetail(e.target.value)} value={dueDetail} />
-          </label>
-          <label>
-            <span>Project Category:</span>
-            <Select options={categories} onChange={(option) => setCategory(option)} />
-          </label>
-          <label>
-            <span>Assign to :</span>
-            <Select options={users} onChange={(option) => setAssignedUser(option)} isMulti />
-          </label>
-          <Button type="submit">Add Project</Button>
+      <Container>
+        <Row>
+          <Col span={12}>
+            <h2>Create New Project</h2>
+            <form onSubmit={handleSubmit}>
+              <label>
+                <span>Project Name:</span>
+                <Input width="100%" type="text" required onChange={(e) => setName(e.target.value)} value={name} />
+              </label>
+              <label>
+                <span>Project Details:</span>
+                <Textarea
+                  width="100%"
+                  type="text"
+                  required
+                  onChange={(e) => setDetails(e.target.value)}
+                  value={details}
+                />
+              </label>
+              <label>
+                <span>Set Due Date:</span>
+                <Input
+                  width="100%"
+                  type="date"
+                  required
+                  onChange={(e) => setDuedetail(e.target.value)}
+                  value={dueDetail}
+                />
+              </label>
+              <label>
+                <span>Project Category:</span>
+                <Select options={categories} onChange={(option) => setCategory(option)} />
+              </label>
+              <label>
+                <span>Assign to :</span>
+                <Select options={users} onChange={(option) => setAssignedUser(option)} isMulti />
+              </label>
+              <Button type="submit">Add Project</Button>
 
-          {formError && <p className="error">{formError}</p>}
-        </form>
-      </div>
+              {formError && <p className="error">{formError}</p>}
+            </form>
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   );
 }

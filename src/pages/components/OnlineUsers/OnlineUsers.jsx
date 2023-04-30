@@ -1,6 +1,6 @@
-import { Badge, User } from "@nextui-org/react";
+import { User, Text } from "@nextui-org/react";
 import { useCollection } from "../../../hooks/useCollection";
-import Avatar from "../Avatar/Avatar";
+
 import "./OnlineUsers.css";
 
 const OnlineUsers = () => {
@@ -8,7 +8,7 @@ const OnlineUsers = () => {
 
   return (
     <div className="user-list">
-      <h2>All Users</h2>
+      <Text h2>Users</Text>
       {error && <div className="error">{error} </div>}
       {document &&
         document.map((user) => (

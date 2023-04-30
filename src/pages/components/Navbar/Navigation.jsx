@@ -43,29 +43,22 @@
 // };
 
 // export default Navigation;
-import { Navbar, Link, Text, Avatar, Dropdown, Button } from "@nextui-org/react";
+import { Link } from "react-router-dom";
+import { Navbar, Link as NextLink, Text, Avatar, Dropdown, Button } from "@nextui-org/react";
 import { useTheme as useNextTheme } from "next-themes";
 import { Switch, useTheme } from "@nextui-org/react";
 import { useLogout } from "hooks/useLogout";
 import "./Navigation.css";
+import { useAuthContext } from "hooks/useAuthContext";
+import { NavLink } from "react-router-dom";
 
-export default function Navigation() {
+const Navigation = () => {
+  const { user } = useAuthContext();
   const { logout, isPending } = useLogout();
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
 
-  const collapseItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
+  const collapseItems = ["Dashboard", "Help & Feedback", "Log Out"];
 
   return (
     <Navbar isBordered variant="sticky" maxWidth={"fluid"}>
@@ -77,17 +70,18 @@ export default function Navigation() {
           },
         }}
       >
-        <Text b color="inherit" hideIn="xs">
+        <Link to="/" color="inherit" hideIn="xs">
           The BOSS
-        </Text>
+        </Link>
       </Navbar.Brand>
       <Navbar.Content enableCursorHighlight activeColor="secondary" hideIn="xs" variant="highlight-rounded">
-        <Navbar.Link href="#">Features</Navbar.Link>
-        <Navbar.Link isActive href="#">
-          Customers
-        </Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Company</Navbar.Link>
+        <NavLink className="navigation-links" to="/">
+          Dashboard
+        </NavLink>
+        {"    "}
+        <NavLink className="navigation-links" to="/create">
+          Create New Project
+        </NavLink>
       </Navbar.Content>
       <Navbar.Content
         css={{
@@ -103,13 +97,7 @@ export default function Navigation() {
         <Dropdown placement="bottom-right">
           <Navbar.Item>
             <Dropdown.Trigger>
-              <Avatar
-                bordered
-                as="button"
-                color="secondary"
-                size="md"
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-              />
+              {user && <Avatar bordered as="button" color="secondary" size="md" src={user.photoURL} />}
             </Dropdown.Trigger>
           </Navbar.Item>
           <Dropdown.Menu
@@ -118,25 +106,21 @@ export default function Navigation() {
             onAction={(actionKey) => console.log({ actionKey })}
           >
             <Dropdown.Item key="profile" css={{ height: "$18" }}>
-              <Text b color="inherit" css={{ d: "flex" }}>
-                Signed in as
-              </Text>
-              <Text b color="inherit" css={{ d: "flex" }}>
-                zoey@example.com
-              </Text>
+              {user && (
+                <>
+                  <Text b color="inherit" css={{ d: "flex" }}>
+                    Signed in as {user.displayName}
+                  </Text>
+                  <Text b color="inherit" css={{ d: "flex" }}>
+                    {user.email}
+                  </Text>
+                </>
+              )}
             </Dropdown.Item>
             <Dropdown.Item key="settings" withDivider>
               My Settings
             </Dropdown.Item>
             <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
-            <Dropdown.Item key="analytics" withDivider>
-              Analytics
-            </Dropdown.Item>
-            <Dropdown.Item key="system">System</Dropdown.Item>
-            <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
-            <Dropdown.Item key="help_and_feedback" withDivider>
-              Help & Feedback
-            </Dropdown.Item>
             <Dropdown.Item key="logout" withDivider color="error">
               {!isPending && (
                 <button className="transparent-button" onClick={logout}>
@@ -157,7 +141,7 @@ export default function Navigation() {
             }}
             isActive={index === 2}
           >
-            <Link
+            <NextLink
               color="inherit"
               css={{
                 minWidth: "100%",
@@ -165,10 +149,11 @@ export default function Navigation() {
               href="#"
             >
               {item}
-            </Link>
+            </NextLink>
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>
     </Navbar>
   );
-}
+};
+export default Navigation;

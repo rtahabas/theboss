@@ -3,6 +3,8 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 import Avatar from "../Avatar/Avatar";
 
 import "./Sidebar.css";
+import { Text } from "@nextui-org/react";
+import OnlineUsers from "../OnlineUsers/OnlineUsers";
 
 const Sidebar = () => {
   const { user } = useAuthContext();
@@ -12,10 +14,11 @@ const Sidebar = () => {
       <div className="sidebar-content">
         <div className="user">
           <Avatar src={user.photoURL} />
-          <p>Hello! {user.displayName}</p>
+          <Text>Hello! {user.displayName}</Text>
+          <Text> {user.email}</Text>
         </div>
         <nav className="links">
-          <ul>
+          {/* <ul>
             <li>
               <NavLink exact to="/">
                 <span>Dashboard</span>
@@ -26,7 +29,8 @@ const Sidebar = () => {
                 <span>New Project</span>
               </NavLink>
             </li>
-          </ul>
+          </ul> */}
+          <OnlineUsers />
         </nav>
       </div>
     </div>

@@ -18,10 +18,10 @@ const Layout = ({ children }) => {
           <Col span={2}>
             <Sidebar />
           </Col>
-          <Col span={8}>{children}</Col>
-          <Col span={2}>
+          <Col span={10}>{children}</Col>
+          {/* <Col span={2}>
             <OnlineUsers />
-          </Col>
+          </Col> */}
         </Row>
       </Box>
     </Container>

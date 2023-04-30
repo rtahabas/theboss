@@ -6,7 +6,7 @@ const ProjectList = ({ project }) => {
       {project.length === 0 && <div>No project yet!</div>}
       {project.map((project) => {
         return (
-          <Col key={project.id}>
+          <Col span={4} key={project.id}>
             <Card isHoverable variant="bordered">
               <Card.Body>
                 <Link to={`/projects/${project.id}`} size={15} css={{ m: 0 }}>
