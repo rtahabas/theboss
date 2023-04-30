@@ -14,7 +14,11 @@ const Layout = ({ children }) => {
         }}
       >
         <Navigation />
-        <Row>
+        <Row
+          css={{
+            height: "calc(100vh - 76px)",
+          }}
+        >
           <Col span={2}>
             <Sidebar />
           </Col>
