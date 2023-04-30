@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "@nextui-org/react";
+import { Col, Container, Grid, Row } from "@nextui-org/react";
 import OnlineUsers from "pages/components/OnlineUsers/OnlineUsers";
 import Sidebar from "pages/components/Sidebar/Sidebar";
 import "./Layout.css";
@@ -19,13 +19,15 @@ const Layout = ({ children }) => {
             height: "calc(100vh - 76px)",
           }}
         >
-          <Col span={2}>
-            <Sidebar />
-          </Col>
-          <Col span={10}>{children}</Col>
-          {/* <Col span={2}>
-            <OnlineUsers />
-          </Col> */}
+          <Grid.Container>
+            <Grid xs={0} md={2}>
+              {" "}
+              <Sidebar />{" "}
+            </Grid>
+            <Grid xs={12} md={10}>
+              {children}
+            </Grid>
+          </Grid.Container>
         </Row>
       </Box>
     </Container>

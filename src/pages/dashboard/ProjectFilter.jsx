@@ -8,7 +8,7 @@ const ProjectFilter = ({ filter, projectsFilter }) => {
   return (
     <div className="project-filter">
       <Navbar isBordered variant="sticky">
-        <Navbar.Content hideIn="xs">
+        <Navbar.Content>
           {filterList.map((filterList) => {
             return (
               <Navbar.Link
