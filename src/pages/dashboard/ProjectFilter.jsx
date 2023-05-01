@@ -14,7 +14,7 @@ const ProjectFilter = ({ filter, projectsFilter }) => {
             <Button
               bordered
               shadow
-              color="gradient"
+              color="transparent"
               auto
               onPress={() => projectsFilter(filterList)}
               isActive={filter === filterList ? true : false}
