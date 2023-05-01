@@ -7,23 +7,25 @@ const filterList = ["All", "Mine", "Development", "Design", "Marketing", "Sales"
 
 const ProjectFilter = ({ filter, projectsFilter }) => {
   return (
-    <Card className="project-filter">
-      <Card.Body>
-        <Box className="filter-list">
-          {filterList.map((filterList) => {
-            return (
-              <Button
-                onPress={() => projectsFilter(filterList)}
-                isActive={filter === filterList ? true : false}
-                key={filterList}
-              >
-                {filterList}
-              </Button>
-            );
-          })}
-        </Box>
-      </Card.Body>
-    </Card>
+    <Box className="project-filter">
+      <Box className="filter-list">
+        {filterList.map((filterList) => {
+          return (
+            <Button
+              bordered
+              shadow
+              color="gradient"
+              auto
+              onPress={() => projectsFilter(filterList)}
+              isActive={filter === filterList ? true : false}
+              key={filterList}
+            >
+              {filterList}
+            </Button>
+          );
+        })}
+      </Box>
+    </Box>
   );
 };
 
