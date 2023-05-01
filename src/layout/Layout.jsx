@@ -14,17 +14,13 @@ const Layout = ({ children }) => {
         }}
       >
         <Navigation />
-        <Row
-          css={{
-            height: "calc(100vh - 76px)",
-          }}
-        >
+        <Row>
           <Grid.Container>
             <Grid xs={0} md={2}>
               {" "}
               <Sidebar />{" "}
             </Grid>
-            <Grid xs={12} md={10}>
+            <Grid xs={12} md={9}>
               {children}
             </Grid>
           </Grid.Container>

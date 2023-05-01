@@ -1,28 +1,29 @@
-import { Navbar } from "@nextui-org/react";
+import { Button, Card, Navbar } from "@nextui-org/react";
 
 import "./ProjectFilter.css";
+import { Box } from "components/Box/Box";
 
 const filterList = ["All", "Mine", "Development", "Design", "Marketing", "Sales"];
 
 const ProjectFilter = ({ filter, projectsFilter }) => {
   return (
-    <div className="project-filter">
-      <Navbar isBordered variant="sticky">
-        <Navbar.Content>
+    <Card className="project-filter">
+      <Card.Body>
+        <Box className="filter-list">
           {filterList.map((filterList) => {
             return (
-              <Navbar.Link
+              <Button
                 onPress={() => projectsFilter(filterList)}
                 isActive={filter === filterList ? true : false}
                 key={filterList}
               >
                 {filterList}
-              </Navbar.Link>
+              </Button>
             );
           })}
-        </Navbar.Content>
-      </Navbar>
-    </div>
+        </Box>
+      </Card.Body>
+    </Card>
   );
 };
 
