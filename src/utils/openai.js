@@ -1,9 +1,5 @@
 import axios from "axios";
 
-const OPENAI_API_KEY = "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";
-
-console.log(OPENAI_API_KEY);
-
 const gpt3ApiUrl = "https://api.openai.com/v1/engines/davinci-codex/completions";
 
 async function generateCode(prompt) {
