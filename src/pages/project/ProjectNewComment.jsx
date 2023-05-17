@@ -47,7 +47,8 @@ const ProjectNewComment = ({ project }) => {
             />
             <Button
               css={{
-                mt: "1rem",
+                width: "100%",
+                my: "1rem",
               }}
               type="submit"
             >
