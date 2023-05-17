@@ -15,7 +15,9 @@ const Layout = ({ children }) => {
       >
         <Navigation />
         <Row>
-          <Grid.Container>
+          <Grid.Container style={{
+            marginTop: "2rem"
+          }}>
             <Grid xs={0} md={2}>
               {" "}
               <Sidebar />{" "}

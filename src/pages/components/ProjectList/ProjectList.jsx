@@ -18,7 +18,6 @@ const ProjectList = ({ project }) => {
               <Card.Body css={{ p: 0 }}></Card.Body>
 
               <Card.Footer
-                isBlurred
                 css={{
                   position: "absolute",
                   bgBlur: "#ffffff66",

@@ -3,8 +3,9 @@ import { useDocument } from "../../hooks/useDocument";
 import ProjectSummary from "./ProjectSummary";
 import ProjectComments from "./ProjectComments";
 import Layout from "layout/Layout";
-import { Col, Loading, Row } from "@nextui-org/react";
+import { Col, Container, Grid, Loading, Row } from "@nextui-org/react";
 import { Box } from "components/Box/Box";
+import ProjectNewComment from "./ProjectNewComment";
 
 const Project = () => {
   const { id } = useParams();
@@ -48,14 +49,19 @@ const Project = () => {
 
   return (
     <Layout>
-      <Row>
-        <Col span={6}>
-          <ProjectSummary project={document} />
-        </Col>
-        <Col span={6}>
-          <ProjectComments project={document} />
-        </Col>
-      </Row>
+      <Grid.Container>
+        <Grid xs={12} sm={12} lg={6}>
+          <Container>
+            <ProjectSummary project={document} />
+            <ProjectNewComment project={document} />
+          </Container>
+        </Grid>
+        <Grid xs={12} sm={12} lg={6}>
+          <Container>
+            <ProjectComments project={document} />
+          </Container>
+        </Grid>
+      </Grid.Container>
     </Layout>
   );
 };

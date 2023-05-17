@@ -6,11 +6,19 @@ import { useState } from "react";
 import { useAuthContext } from "hooks/useAuthContext";
 import "./Dashboard.css";
 import Layout from "layout/Layout";
+import { generateCode } from "utils/openai";
 
 const Dashboard = () => {
   const { document, error } = useCollection("projects");
   const [filter, setFilter] = useState("All");
   const { user } = useAuthContext();
+  const [prompt, setPrompt] = useState("");
+  const [code, setCode] = useState("");
+
+  async function handleClick() {
+    const generatedCode = await generateCode(prompt);
+    setCode(generatedCode);
+  }
 
   const projectsFilter = (filter) => {
     setFilter(filter);
@@ -43,6 +51,11 @@ const Dashboard = () => {
   return (
     <Layout>
       <Container gap={0}>
+        {/* <div>
+          <input type="text" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
+          <button onClick={handleClick}>Generate Code</button>
+          <pre>{code}</pre>
+        </div> */}
         <ProjectFilter projectsFilter={projectsFilter} filter={filter} />
         <Spacer y={1} />
         <Row gap={1}>{document && <ProjectList project={projects} />}</Row>
