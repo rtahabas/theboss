@@ -7,7 +7,7 @@ import Navigation from "pages/components/Navbar/Navigation";
 
 const Layout = ({ children }) => {
   return (
-    <Container gap={0}>
+    <Container>
       <Box
         css={{
           maxW: "100%",
@@ -18,6 +18,7 @@ const Layout = ({ children }) => {
           <Grid.Container
             style={{
               marginTop: "2rem",
+              marginBottom: "2rem",
               zIndex: 1,
             }}
           >
