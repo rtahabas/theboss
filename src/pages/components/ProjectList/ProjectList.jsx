@@ -8,13 +8,14 @@ const ProjectList = ({ project }) => {
       {project.length === 0 && <div>No project yet!</div>}
       {project.map((project) => {
         return (
-          <Col span={4} key={project.id}>
-            <Card isHoverable css={{ w: "100%", h: "150px" }}>
+          <Col key={project.id}>
+            <Card isHoverable css={{ w: "100%", h: "180px" }}>
               <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                 <Col>
                   <Text h3>{project.name}</Text>
                 </Col>
               </Card.Header>
+
               <Card.Body css={{ p: 0 }}></Card.Body>
 
               <Card.Footer

@@ -7,6 +7,7 @@ import { useAuthContext } from "hooks/useAuthContext";
 import "./Dashboard.css";
 import Layout from "layout/Layout";
 import { generateCode } from "utils/openai";
+import { Box } from "components/Box/Box";
 
 const Dashboard = () => {
   const { document, error } = useCollection("projects");
@@ -56,9 +57,15 @@ const Dashboard = () => {
           <button onClick={handleClick}>Generate Code</button>
           <pre>{code}</pre>
         </div> */}
-        <ProjectFilter projectsFilter={projectsFilter} filter={filter} />
+        <Container>
+          <Row gap={1}>
+            <ProjectFilter projectsFilter={projectsFilter} filter={filter} />
+          </Row>
+        </Container>
         <Spacer y={1} />
-        <Row gap={1}>{document && <ProjectList project={projects} />}</Row>
+        <Container>
+          <Box className="project-list">{document && <ProjectList project={projects} />}</Box>
+        </Container>
         {error && <div>{error}</div>}
       </Container>
     </Layout>
