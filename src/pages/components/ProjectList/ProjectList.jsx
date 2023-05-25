@@ -9,8 +9,8 @@ const ProjectList = ({ project }) => {
       {project.map((project) => {
         return (
           <Col key={project.id}>
-            <Card isHoverable css={{ w: "100%", h: "180px" }}>
-              <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
+            <Card isHoverable css={{ w: "100%" }}>
+              <Card.Header css={{ zIndex: 1 }}>
                 <Col>
                   <Text h3>{project.name}</Text>
                 </Col>
@@ -38,9 +38,6 @@ const ProjectList = ({ project }) => {
                     <Text color="#000" size={12}>
                       Due by {project.dueDate.toDate().toDateString()}
                     </Text>
-                    {/* <Text color="#000" size={12}>
-                      Get notified.
-                    </Text> */}
                   </Col>
                   <Col>
                     <Row justify="flex-end">
